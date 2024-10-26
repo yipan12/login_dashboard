@@ -19,16 +19,23 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
-        backgroundColor: Colors.blueAccent,
+        title: Text(
+          "IrpanMart",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w300,
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
-      body: Padding(
+      body: Container(
+        color: Color.fromARGB(255, 255, 255, 255),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Welcome",
+              "Selamat Datang",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -37,16 +44,30 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 20),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.email),
+                labelText: 'Username',
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2.0,
+                    )),
+                prefixIcon: Icon(Icons.person),
               ),
             ),
             SizedBox(height: 20),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Password',
-                border: OutlineInputBorder(),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2.0,
+                    )),
                 prefixIcon: Icon(Icons.lock),
               ),
               obscureText: true,
@@ -56,17 +77,17 @@ class LoginPage extends StatelessWidget {
               onPressed: () {
                 // Handle login action
               },
-              child: Text("Login"),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+              child: Text(
+                "Login",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15),
               ),
-            ),
-            SizedBox(height: 20),
-            TextButton(
-              onPressed: () {
-                // Handle forgot password action
-              },
-              child: Text("Forgot Password?"),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 170, vertical: 15),
+                backgroundColor: const Color.fromARGB(255, 0, 153, 255),
+              ),
             ),
           ],
         ),
