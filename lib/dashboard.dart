@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
 
-class dashboard extends StatefulWidget {
-  const dashboard({super.key});
+class Dashboard extends StatefulWidget {
+  final String username;
+
+  const Dashboard({super.key, required this.username});
 
   @override
-  State<dashboard> createState() => _dashboardState();
+  State<Dashboard> createState() => _DashboardState();
 }
 
-class _dashboardState extends State<dashboard> {
+class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(bottom: 64, top: 64, left: 24, right: 24),
+        padding:
+            const EdgeInsets.only(bottom: 64, top: 64, left: 24, right: 24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               child: Text(
-                "Hallo User",
-                style: TextStyle(fontSize: 40, color: Colors.green),
+                "Hallo ${widget.username}",
+                style: const TextStyle(fontSize: 40, color: Colors.green),
               ),
             ),
             Container(
@@ -28,11 +32,11 @@ class _dashboardState extends State<dashboard> {
                 children: [
                   Container(
                     color: Colors.amber,
-                    child: Text("ini menu"),
+                    child: const Text("ini menu"),
                   ),
                   Container(
                     color: Colors.blueAccent,
-                    child: Text("ini menu 2"),
+                    child: const Text("ini menu 2"),
                   ),
                 ],
               ),

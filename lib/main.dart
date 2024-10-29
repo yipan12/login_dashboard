@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:login_dashboard/dashboard.dart';
+import 'package:login_dashboard/Dashboard.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
 }
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -51,15 +55,15 @@ class _LoginPageState extends State<LoginPage> {
     String password = _passwordController.text;
 
     if (username.isEmpty || password.isEmpty) {
-      showToast(); // Memanggil toast saat username atau password kosong
+      showToast();
     } else if (username == "Irpan" && password == "123") {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => dashboard()),
+        MaterialPageRoute(builder: (context) => Dashboard(username: username)),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text("Username atau Password salah"),
         ),
       );
@@ -70,27 +74,27 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "IrpanMart",
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.w300,
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 231, 231, 231),
+        backgroundColor: const Color.fromARGB(255, 231, 231, 231),
       ),
       body: Container(
-        color: Color.fromARGB(255, 231, 231, 231),
+        color: const Color.fromARGB(255, 231, 231, 231),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               'asset/svg/undraw_login_re_4vu2.svg',
-              height: 120,
+              height: 100,
             ),
             Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 238, 238, 238),
                 borderRadius: BorderRadius.circular(20),
@@ -99,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.grey.withOpacity(0.3),
                     spreadRadius: 3,
                     blurRadius: 7,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
@@ -109,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                     animatedTexts: [
                       TypewriterAnimatedText(
                         "Selamat Datang!!",
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
@@ -119,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                     totalRepeatCount: 2,
                     isRepeatingAnimation: false,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 14),
                   TextField(
                     controller: _usernameController,
                     decoration: InputDecoration(
@@ -129,15 +133,15 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.blue,
                           width: 2.0,
                         ),
                       ),
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: const Icon(Icons.person),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 14),
                   TextField(
                     controller: _passwordController,
                     decoration: InputDecoration(
@@ -147,18 +151,23 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.blue,
                           width: 2.0,
                         ),
                       ),
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                     ),
                     obscureText: true,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 14),
                   ElevatedButton(
                     onPressed: () => _login(context),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 100, vertical: 15),
+                      backgroundColor: const Color.fromARGB(255, 0, 153, 255),
+                    ),
                     child: Text(
                       "Login",
                       style: TextStyle(
@@ -166,11 +175,6 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.w500,
                         fontSize: 15,
                       ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                      backgroundColor: const Color.fromARGB(255, 0, 153, 255),
                     ),
                   ),
                 ],
